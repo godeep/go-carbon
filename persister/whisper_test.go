@@ -51,6 +51,7 @@ func TestLoadCommited(t *testing.T) {
 	schemas := WhisperSchemas{}
 	aggrs := WhisperAggregation{}
 	p := NewWhisper("foo", &schemas, &aggrs, inchan)
+	atomic.AddUint64(&p.commited, (uint64(1)<<32)+uint64(42))
 	atomic.LoadUint64(&p.commited)
 }
 
